@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang = "en">
+   <head>
+      <meta charset = "utf-8">
+      <title>jQuery UI Droppable</title>
+      <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet" />
+      <script src = "https://code.jquery.com/jquery-1.10.2.js" type="text/javascript"></script>
+      <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js" type="text/javascript"></script>
+      
+      <style type="text/css">
+		.ui-widget-header {
+            background:rgb(222, 222, 79);
+            border: 1px solid rgb(250, 71, 71);
+            color: #161515;
+            font-weight: bold;
+         }
+         .ui-widget-content {
+            background: rgb(141, 234, 10);
+            border: 1px solid #f20d0d;
+            color: #0b0b0b;
+         }
+		 .MyCls{background-color:#0ae87d;color:#FFFFFF}
+         #Sky9Students { 
+            width: 200px; 
+            height: 200px; 
+            padding: 10px; 
+            margin: 0px 5px 10px 0; 
+         }
+         
+         #Sky9{ 
+            width: 250px;
+            height: 250px;
+            padding: 10px; 
+            margin: 10px;  
+         }
+         .dout{
+            background-color:rgb(222, 201, 11);
+            border: 1px solid #f80909;
+            color: #100f0f;
+         }
+      </style>
+
+      <script type="text/javascript">
+         $(document).ready(function () {
+		  
+              $("#Sky9Students").draggable();
+
+              $("#Sky9").droppable({ 
+                  accept: "#Sky9Students",
+                  
+              });
+             
+              $("#Sky9").droppable({ 
+               drop:function(event,ui){
+                  var colorChange=prompt("enter the color");
+                  $("#Sky9").css("background-color",colorChange).html("it's Change!!....")
+               }
+              });
+              $("#Sky9").droppable({ 
+               out:function(event,ui){
+                  $("#Sky9").addClass("dout").find("p").html("Bye Bye Students!.....");             
+                 }
+              });
+              $("#Sky9").droppable("Destroy")             
+                 
+          });
+      </script>
+   </head>
+   
+   <body bgcolor="#838388">
+         <div id="Sky9Students" class = "ui-widget-content">
+            <p>Hi ... I M B.C.A. Student.</p>
+         </div>
+         <hr/>
+         <div id="Sky9" class = "ui-widget-header">
+            <p>Welcome to My Program.....</p>
+         </div>
+      
+      
+   </body>
+</html>
